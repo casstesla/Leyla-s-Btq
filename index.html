@@ -1,1 +1,587 @@
 
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Leyla's Boutique - Luxury Uzbek Fashion</title>
+    <!-- Добавляем шрифты из Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@300;400;500&family=Playfair+Display:wght@400;500&display=swap" rel="stylesheet">
+    <style>
+        /* Global Styles */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Cormorant Garamond', serif;
+        }
+        
+        body {
+            background-color: #f8f5f0;
+            color: #4a3c2d;
+            line-height: 1.6;
+        }
+        
+        /* Typography */
+        h1, h2, h3 {
+            font-weight: 300;
+            letter-spacing: 1.5px;
+        }
+        
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+        }
+        
+        h2 {
+            font-size: 2rem;
+            margin-bottom: 2rem;
+            position: relative;
+        }
+        
+        h2::after {
+            content: "";
+            display: block;
+            width: 50px;
+            height: 1px;
+            background: #c7a95a;
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        p {
+            margin-bottom: 1rem;
+            font-size: 1.1rem;
+        }
+        
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.5rem 5%;
+            background-color: rgba(255, 255, 255, 0.9);
+            position: fixed;
+            width: 100%;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.8rem;
+            letter-spacing: 2px;
+            color: #b39355;
+        }
+        
+        .logo span {
+            color: #b39355;
+        }
+        
+        .nav-links {
+            display: flex;
+            list-style: none;
+        }
+        
+        .nav-links li {
+            margin-left: 2.5rem;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: #4a3c2d;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.2px;
+            transition: color 0.3s;
+        }
+        
+        .nav-links a:hover {
+            color: #b39355;
+        }
+        
+        /* Hero Section */
+        .hero {
+            height: 100vh;
+            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.4)), url('https://i.postimg.cc/bNLVJXLg/IMG-2845.jpg') center/cover no-repeat;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: #fff;
+            padding: 0 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            backdrop-filter: blur(2px);
+            -webkit-backdrop-filter: blur(2px);
+            z-index: 1;
+        }
+        
+        .hero-content {
+            max-width: 800px;
+            position: relative;
+            z-index: 2;
+        }
+        
+        .hero h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1.5rem;
+            letter-spacing: 3px;
+        }
+        
+        .hero p {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            max-width: 600px;
+            margin: 0 auto 2rem;
+        }
+        
+        .btn {
+            display: inline-block;
+            padding: 0.8rem 2.5rem;
+            border: 1px solid #c7a95a;
+            color: #fff;
+            text-decoration: none;
+            text-transform: uppercase;
+            font-size: 0.85rem;
+            letter-spacing: 1.5px;
+            transition: background 0.3s, color 0.3s;
+            margin-top: 1rem;
+        }
+        
+        .btn:hover {
+            background: #c7a95a;
+            color: #fff;
+        }
+        
+        /* Collection Section */
+        .section {
+            padding: 5rem 10%;
+            text-align: center;
+        }
+        
+        .section-title {
+            position: relative;
+            margin-bottom: 3rem;
+        }
+        
+        .collection-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .collection-item {
+            position: relative;
+            overflow: hidden;
+            height: 400px;
+            background: #f2efe8;
+        }
+        
+        .collection-img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+        
+        .collection-info {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(255, 255, 255, 0.9);
+            padding: 1.5rem;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+        
+        .collection-item:hover .collection-img {
+            transform: scale(1.05);
+        }
+        
+        .collection-item:hover .collection-info {
+            transform: translateY(0);
+        }
+        
+        .collection-name {
+            font-family: 'Playfair Display', serif;
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+            color: #7c5f33;
+        }
+        
+        .collection-price {
+            color: #4a3c2d;
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 1rem;
+        }
+        
+        /* Story Section with Pattern Background */
+        .story {
+            padding: 6rem 10%;
+            background: url('https://i.postimg.cc/J06nf5Yb/pattern-bg.jpg') center/200px repeat;
+            position: relative;
+        }
+        
+        .story::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(248, 245, 240, 0.9);
+        }
+        
+        .story-content {
+            position: relative;
+            background: rgba(255, 255, 255, 0.8);
+            padding: 4rem;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: center;
+        }
+        
+        /* Featured Section */
+        .featured {
+            background-color: #f2efe8;
+        }
+        
+        .featured-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 3rem;
+        }
+        
+        .featured-item {
+            text-align: center;
+        }
+        
+        .featured-icon {
+            font-size: 2.5rem;
+            color: #b39355;
+            margin-bottom: 1rem;
+        }
+        
+        .featured-title {
+            font-size: 1.3rem;
+            margin-bottom: 1rem;
+            color: #7c5f33;
+        }
+        
+        /* Instagram Section */
+        .instagram {
+            margin-top: 5rem;
+        }
+        
+        .insta-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+        }
+        
+        .insta-item {
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .insta-img {
+            width: 100%;
+            display: block;
+            transition: transform 0.3s;
+        }
+        
+        .insta-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(179, 147, 85, 0.6);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            opacity: 0;
+            transition: opacity 0.3s;
+        }
+        
+        .insta-item:hover .insta-overlay {
+            opacity: 1;
+        }
+        
+        .insta-item:hover .insta-img {
+            transform: scale(1.1);
+        }
+        
+        /* Footer */
+        footer {
+            background: #35302a;
+            color: #f8f5f0;
+            padding: 5rem 10% 2rem;
+            text-align: center;
+        }
+        
+        .footer-logo {
+            font-family: 'Playfair Display', serif;
+            font-size: 2rem;
+            color: #c7a95a;
+            margin-bottom: 2rem;
+        }
+        
+        .footer-links {
+            display: flex;
+            justify-content: center;
+            list-style: none;
+            margin-bottom: 3rem;
+        }
+        
+        .footer-links li {
+            margin: 0 1.5rem;
+        }
+        
+        .footer-links a {
+            color: #f8f5f0;
+            text-decoration: none;
+            font-size: 0.9rem;
+            letter-spacing: 1px;
+            transition: color 0.3s;
+        }
+        
+        .footer-links a:hover {
+            color: #c7a95a;
+        }
+        
+        .social-icons {
+            margin-bottom: 2rem;
+        }
+        
+        .social-icons a {
+            color: #f8f5f0;
+            margin: 0 1rem;
+            font-size: 1.2rem;
+            transition: color 0.3s;
+        }
+        
+        .social-icons a:hover {
+            color: #c7a95a;
+        }
+        
+        .copyright {
+            font-size: 0.85rem;
+            color: rgba(248, 245, 240, 0.7);
+            border-top: 1px solid rgba(248, 245, 240, 0.1);
+            padding-top: 2rem;
+        }
+        
+        /* Ornamental Elements */
+        .ornament {
+            width: 100px;
+            height: 50px;
+            background: url('https://i.postimg.cc/L8Sjzcv3/ornament.png') center/contain no-repeat;
+            margin: 0 auto 2rem;
+        }
+        
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            nav {
+                padding: 1rem 5%;
+            }
+            
+            .logo {
+                font-size: 1.5rem;
+            }
+            
+            .nav-links {
+                display: none;
+            }
+            
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+            
+            .section {
+                padding: 4rem 5%;
+            }
+            
+            .story-content {
+                padding: 2rem;
+            }
+            
+            .insta-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <nav>
+        <div class="logo">Leyla's Boutique</div>
+        <ul class="nav-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+    </nav>
+    
+    <!-- Hero Section - исправлен лишний символ > -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>LEYLA'S BOUTIQUE</h1>
+            <p>Discover the luxurious heritage of Uzbekistan through our carefully curated collection of handcrafted textiles and contemporary designs</p>
+            <a href="#collection" class="btn">Explore Collection</a>
+        </div>
+    </section>
+    
+    <!-- Collection Section -->
+    <section class="section" id="collection">
+        <div class="ornament"></div>
+        <h2 class="section-title">New Arrivals</h2>
+        <p>Our latest collection combines traditional Uzbek craftsmanship with modern design aesthetics</p>
+        
+        <div class="collection-grid">
+            <div class="collection-item">
+                <img src="https://i.postimg.cc/DZxQTP9T/ikat-dress.jpg" alt="Silk Ikat Dress" class="collection-img">
+                <div class="collection-info">
+                    <h3 class="collection-name">Silk Ikat Dress</h3>
+                    <span class="collection-price">$245</span>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <img src="https://i.postimg.cc/VkXWmv98/suzani-coat.jpg" alt="Embroidered Suzani Coat" class="collection-img">
+                <div class="collection-info">
+                    <h3 class="collection-name">Embroidered Suzani Coat</h3>
+                    <span class="collection-price">$385</span>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+            
+            <div class="collection-item">
+                <img src="https://i.postimg.cc/3wsn1Qvk/jewelry.jpg" alt="Handcrafted Jewelry" class="collection-img">
+                <div class="collection-info">
+                    <h3 class="collection-name">Handcrafted Jewelry</h3>
+                    <span class="collection-price">$175</span>
+                    <a href="#" class="btn">View Details</a>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Story Section -->
+    <section class="story" id="story">
+        <div class="story-content">
+            <div class="ornament"></div>
+            <h2>Our Heritage</h2>
+            <p>Leyla's Boutique brings the centuries-old craftsmanship of Uzbekistan to New York City. Each piece in our collection tells a story of cultural heritage, artistic expression, and meticulous attention to detail.</p>
+            <p>Founded by Intizorhon Fataeva, our boutique celebrates the rich textile traditions of Central Asia while embracing contemporary design sensibilities. Every item is ethically sourced directly from master artisans, supporting local communities and preserving ancient techniques.</p>
+            <a href="#" class="btn">Read More</a>
+        </div>
+    </section>
+    
+    <!-- Featured Section -->
+    <section class="section featured">
+        <div class="ornament"></div>
+        <h2 class="section-title">What Makes Us Special</h2>
+        
+        <div class="featured-grid">
+            <div class="featured-item">
+                <div class="featured-icon">✦</div>
+                <h3 class="featured-title">Handcrafted Excellence</h3>
+                <p>Each piece is meticulously handcrafted by skilled artisans using techniques passed down through generations</p>
+            </div>
+            
+            <div class="featured-item">
+                <div class="featured-icon">✦</div>
+                <h3 class="featured-title">Sustainable Practices</h3>
+                <p>We are committed to ethical sourcing and sustainable production methods that respect both people and planet</p>
+            </div>
+            
+            <div class="featured-item">
+                <div class="featured-icon">✦</div>
+                <h3 class="featured-title">Cultural Heritage</h3>
+                <p>Our designs honor the rich cultural traditions of Uzbekistan while bringing a contemporary perspective</p>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Instagram Feed Section -->
+    <section class="section instagram">
+        <h2 class="section-title">Follow Our Journey</h2>
+        <p>Connect with us on Instagram @LeylasBoutique</p>
+        
+        <div class="insta-grid">
+            <div class="insta-item">
+                <img src="https://i.postimg.cc/wxr4vf8Y/insta1.jpg" alt="Instagram Post" class="insta-img">
+                <div class="insta-overlay">
+                    <span>@LeylasBoutique</span>
+                </div>
+            </div>
+            
+            <div class="insta-item">
+                <img src="https://i.postimg.cc/mZvfLzBC/insta2.jpg" alt="Instagram Post" class="insta-img">
+                <div class="insta-overlay">
+                    <span>@LeylasBoutique</span>
+                </div>
+            </div>
+            
+            <div class="insta-item">
+                <img src="https://i.postimg.cc/j2NsNV7q/insta3.jpg" alt="Instagram Post" class="insta-img">
+                <div class="insta-overlay">
+                    <span>@LeylasBoutique</span>
+                </div>
+            </div>
+            
+            <div class="insta-item">
+                <img src="https://i.postimg.cc/Wp9vMST5/insta4.jpg" alt="Instagram Post" class="insta-img">
+                <div class="insta-overlay">
+                    <span>@LeylasBoutique</span>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <!-- Footer -->
+    <footer>
+        <div class="footer-logo">Leyla's Boutique</div>
+        
+        <ul class="footer-links">
+            <li><a href="#home">Home</a></li>
+            <li><a href="#collection">Collection</a></li>
+            <li><a href="#story">Our Story</a></li>
+            <li><a href="#shop">Shop</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        
+        <div class="social-icons">
+            <a href="#">✦</a>
+            <a href="#">✦</a>
+            <a href="#">✦</a>
+            <a href="#">✦</a>
+        </div>
+        
+        <div class="copyright">
+            © 2025 Leyla's Boutique. All Rights Reserved.
+        </div>
+    </footer>
+</body>
+</html>
